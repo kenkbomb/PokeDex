@@ -9,13 +9,13 @@ let pokemonList=[
 
 for(let i=0;i<pokemonList.length;i++)
 {
-    document.write('Name: ' + pokemonList[i].name + ', Types: ('+ pokemonList[i].types + '), Height: '+ pokemonList[i].height);
+    document.write('<p>' + 'Name: ' + pokemonList[i].name + ', Types: ('+ pokemonList[i].types + '), Height: '+ pokemonList[i].height);
 
     if(pokemonList[i].height>1.6)
     {
         document.write('   ...WOW! that is big!');
     }
     
-    document.write('<br>');
+    document.write('<br> </p>');
 }
 
