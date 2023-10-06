@@ -1,20 +1,21 @@
-let pokemonList=[];
-let types = ['Electric','Water','Fire','Ground','Rock','Normal','Grass','Bug','Flying','Poison','Fairy','Fighting','Pyschic','Steel','ghost'];
-
-let Pikachu = {name:'Pikachu',type:types[0],height:0.4};
-let Charmander = {name:'Charmander',type:types[2],height:0.6};
-let Squirtle = {name:'Squirtle',type:types[1],height:0.5};
-let Ditto = {name:'Ditto',type:types[5],height:0.3};
-let Diglett = {name:'Diglett',type:types[3],height:0.2};
-
-pokemonList.push(Pikachu);
-pokemonList.push(Charmander);
-pokemonList.push(Squirtle);
-pokemonList.push(Diglett);
-pokemonList.push(Ditto);
+let pokemonList=[
+{name:'Pikachu',types: ['Electric'],height:0.4},
+{name:'Charmander',types:['Fire'],height:0.6},
+{name:'Blastoise',types:'Water',height:1.6},
+{name:'Squirtle',types:['Water'],height:0.5},
+{name:'Charizord',types:['Flying','Fire'],height:1.7},
+{name:'Diglett',types:['Ground'],height:0.2}
+];
 
 for(let i=0;i<pokemonList.length;i++)
 {
-    document.write("Name: " + pokemonList[i].name + ", Type: " + pokemonList[i].type + ", Height: " + pokemonList[i].height +'M' + '<br>');
+    document.write('Name: ' + pokemonList[i].name + ', Types: ('+ pokemonList[i].types + '), Height: '+ pokemonList[i].height);
+
+    if(pokemonList[i].height>1.6)
+    {
+        document.write('   ...WOW! that is big!');
+    }
+    
+    document.write('<br>');
 }
 
