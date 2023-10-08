@@ -1,4 +1,4 @@
-let pokemonList=[
+/*let pokemonList=[
 {name:'Pikachu',types: ['Electric'],height:0.4},
 {name:'Charmander',types:['Fire'],height:0.6},
 {name:'Blastoise',types:'Water',height:1.6},
@@ -6,7 +6,7 @@ let pokemonList=[
 {name:'Charizord',types:['Flying','Fire'],height:1.7},
 {name:'Diglett',types:['Ground'],height:0.2}
 ];
-
+*/
 function listPokeMonWithFor(){
     for(let i=0;i<pokemonList.length;i++)
     {
@@ -35,9 +35,12 @@ function listPokeMonWithForEach()
     document.write('<br> </p>');
     })
 }
+
 function listPokeMonWithIIFE()
 {
+   
     let pokelist = pokeIIFe.getAll();
+
     pokelist.forEach(function(pokemon)
     {
         document.write('<p>' + 'Name: ' + pokemon.name + ', Types: ('+ pokemon.types + '), Height: '+ pokemon.height);
@@ -77,7 +80,12 @@ let pokeIIFe = (function()
 })();
 
 // listPokeMonWithForEach();
-
+let pokemon  = {
+    name:'Metapod',types:['bug'],height:0.7
+}
+pokeIIFe.add(pokemon);
 listPokeMonWithIIFE();
+
+
 
 
