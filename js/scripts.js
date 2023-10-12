@@ -67,19 +67,20 @@ let pokemonRepository = (function()//Pokemon Repository...
                 })
         }
     
-        function showDetails(pokemon)
-        {
-            console.log(pokemon);
-        }
+        function showDetails(pokemon) {
+            loadDetails(pokemon).then(function () {
+              console.log(pokemon);
+            });
+          }
 
-        // pokemonList = pokemonRepository.getAll();
+        
         let htmlPokeList = document.querySelector('ul');
     
 
         function loadList()
         {
             
-            return fetch(apiUrl).then(function (response) {
+            return fetch(apiURL).then(function (response) {
                 return response.json();
             }).then(function (json) {
                 json.results.forEach(function (item) {
@@ -87,7 +88,7 @@ let pokemonRepository = (function()//Pokemon Repository...
                     name: item.name,
                     detailsUrl: item.url
                 };
-                add(pokemon);
+                pokemonRepository.add(pokemon);
                 });
             }).catch(function (e) {
                 console.error(e);
@@ -95,16 +96,30 @@ let pokemonRepository = (function()//Pokemon Repository...
             
         }
 
-        function loadDetails()
-        {
+       
 
-        }
+  function loadDetails(item) {//item is a pokemon...
+    let url = item.detailsUrl;//url taken from the pokemons detailsURL, given from loadlist above...
+    return fetch(url).then(function (response) {//fetch the data from the URL, as a response and turn it into json data...
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+  
 
      return{
         add:addPokemon,
         getAll:getAllPokemon,
         addListItem:addListItem,
-        loadList:loadList
+        loadList:loadList,
+        loadDetails:loadDetails
         
     }
 })();
@@ -112,15 +127,14 @@ let pokemonRepository = (function()//Pokemon Repository...
 
 
 pokemonRepository.loadList().then(function() {
-    // Now the data is loaded!
+    
     pokemonRepository.getAll().forEach(function(pokemon){
-    pokemonList.addListItem(pokemon);
+    pokemonRepository.addListItem(pokemon);
     });
   });
 
 
-//  listPokeMonWithIIFE();
-console.log(pokemonList);
+
 
 
 
