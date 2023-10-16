@@ -1,40 +1,11 @@
 
-/*
-    function addListItem(pokemon)
-    {
-            let pokeItem = document.createElement('li');
-            let pokeButton = document.createElement('button');
-            pokeButton.innerText = pokemon.name;
-            pokeButton.classList.add('pokeButton');
-            pokeItem.appendChild(pokeButton);
-            htmlPokeList.appendChild(pokeItem);
-            pokeButton.addEventListener('click',function(event)
-            {
-                showDetails(pokemon);
-                
-            })
-    }
-
-    function showDetails(pokemon)
-    {
-        console.log(pokemon);
-    }
-    let pokemonList = pokemonRepository.getAll();
-    let htmlPokeList = document.querySelector('ul');
-
-    pokemonList.forEach(function(pokemon)
-    {
-        addListItem(pokemon);
-      
-    })
-*/
 //---------------------------------------------------------------------------------------------------------------------
 
 let pokemonRepository = (function()//Pokemon Repository...
 {
         let pokemonList = [];
         let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-
+        let closeButton;
 
         function addPokemon(pokemon)
         {
@@ -52,7 +23,7 @@ let pokemonRepository = (function()//Pokemon Repository...
             return pokemonList;
         }
 
-        function addListItem(pokemon)
+        function addListItem(pokemon)//adds and appends the html elements, the main list
         {
                 let pokeItem = document.createElement('li');
                 let pokeButton = document.createElement('button');
@@ -60,20 +31,65 @@ let pokemonRepository = (function()//Pokemon Repository...
                 pokeButton.classList.add('pokeButton');
                 pokeItem.appendChild(pokeButton);
                 htmlPokeList.appendChild(pokeItem);
-                pokeButton.addEventListener('click',function(event)
+                pokeButton.addEventListener('click',function(event)//the button that shows the pokemon details
                 {
                     showDetails(pokemon);
                  
                 })
         }
     
-        function showDetails(pokemon) {
+        function showDetails(pokemon) //the showdetails function, assigned to the pokeButton element
+        {
             loadDetails(pokemon).then(function () {
               console.log(pokemon);
-            });
-          }
+           
 
-        
+            let modalContainer = document.getElementById('modalContainer');
+            modalContainer.classList.add('isVisible');
+            modalContainer.classList.remove('isHidden');
+            closeButton = document.getElementById('closeButton');
+            closeButton.addEventListener('click',closeModal);
+
+           let pokeName = document.getElementById('pokeName');
+           let pokeHeight = document.getElementById('pokeHeight');
+            let pokeImg = document.getElementById('pokeImg');
+
+           pokeName.innerText = pokemon.name;
+           pokeHeight.innerText = 'Height: '+ pokemon.height.toString();
+        //    alert(pokemon.height.toString());
+            pokeImg.imageUrl = pokemon.imageUrl.sprites;
+            let image = document.getElementById('pImage');
+            image.setAttribute('src',pokemon.imageUrl);
+            // pokeImg.appendChild(image);
+            
+            window.addEventListener('keydown',(e)=>
+            {
+                if(e.key==='Escape')
+                {
+                    closeModal();
+                    
+                }
+            });
+            
+
+            modalContainer.addEventListener('click', (e) => {
+               
+                let target = e.target;
+                if (target ===modalContainer) {
+                  closeModal();
+                }
+              });
+            });
+           }
+
+        function closeModal()
+        {
+            // modalContainer.classList.add('isHidden');
+            modalContainer.classList.remove('isVisible');
+            // pokeImg.removeChild();
+        }
+       
+
         let htmlPokeList = document.querySelector('ul');
     
 
@@ -86,6 +102,7 @@ let pokemonRepository = (function()//Pokemon Repository...
                 json.results.forEach(function (item) {
                 let pokemon = {
                     name: item.name,
+                    height:item.height,
                     detailsUrl: item.url
                 };
                 pokemonRepository.add(pokemon);
