@@ -6,6 +6,8 @@ let pokemonRepository = (function()//Pokemon Repository...
         let pokemonList = [];
         let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
         let closeButton;
+        let pTypeModalColor;
+        let modal = document.getElementById('modal');
 
         function addPokemon(pokemon)
         {
@@ -53,15 +55,61 @@ let pokemonRepository = (function()//Pokemon Repository...
            let pokeName = document.getElementById('pokeName');
            let pokeHeight = document.getElementById('pokeHeight');
             let pokeImg = document.getElementById('pokeImg');
+            let pType = document.getElementById('ptype');
 
            pokeName.innerText = pokemon.name;
            pokeHeight.innerText = 'Height: '+ pokemon.height.toString();
-        //    alert(pokemon.height.toString());
+           pType.innerText = 'Type: ' + pokemon.types[0].type.name;
+        
             pokeImg.imageUrl = pokemon.imageUrl.sprites;
             let image = document.getElementById('pImage');
             image.setAttribute('src',pokemon.imageUrl);
-            // pokeImg.appendChild(image);
-            
+           
+                
+            console.log(pokemon.types[0].type.name);
+            pTypeModalColor = pokemon.types[0].type.name;
+                 modal = document.getElementById('modal');
+               if(pTypeModalColor==='water'||pTypeModalColor==='ice')
+               {
+                    modal.style.backgroundColor = 'aqua';
+               }
+               if(pTypeModalColor==='bug'||pTypeModalColor==='grass')
+               {
+                
+                modal.style.backgroundColor = 'rgb(10, 197, 82) ';
+               }
+               if(pTypeModalColor==='fire')
+               {
+                modal.style.backgroundColor = 'darkgoldenrod';
+               }
+               if(pTypeModalColor==='electric')
+               {
+                modal.style.backgroundColor = 'darkyellow';
+               }
+               if(pTypeModalColor==='poison')
+               {
+                modal.style.backgroundColor = 'purple';
+               }
+               if(pTypeModalColor==='ground')
+               {
+                modal.style.backgroundColor = 'lightbrown';
+               }
+               if(pTypeModalColor==='fighting')
+               {
+                modal.style.backgroundColor = 'lightbrown';
+               }
+               if(pTypeModalColor==='normal')
+               {
+                modal.style.backgroundColor = 'lightbrown';
+               }
+               if(pTypeModalColor==='ghost'||pTypeModalColor==='rock')
+               {
+                modal.style.backgroundColor = 'grey';
+               }
+
+               console.log(pTypeModalColor);
+
+
             window.addEventListener('keydown',(e)=>
             {
                 if(e.key==='Escape')
@@ -80,13 +128,13 @@ let pokemonRepository = (function()//Pokemon Repository...
                 }
               });
             });
-           }
+        }
 
         function closeModal()
         {
-            // modalContainer.classList.add('isHidden');
+            
             modalContainer.classList.remove('isVisible');
-            // pokeImg.removeChild();
+           
         }
        
 
@@ -103,7 +151,8 @@ let pokemonRepository = (function()//Pokemon Repository...
                 let pokemon = {
                     name: item.name,
                     height:item.height,
-                    detailsUrl: item.url
+                    detailsUrl: item.url,
+                    types:item.types
                 };
                 pokemonRepository.add(pokemon);
                 });

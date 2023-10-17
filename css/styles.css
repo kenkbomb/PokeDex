@@ -13,6 +13,8 @@ body{
 }
 h1{
     text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
 }
 ul{
     list-style: none;
@@ -24,9 +26,9 @@ ul{
     border-radius: 5px;
 }
 .isVisible{
-    background-color:rgba(0, 153, 255, 0.26);
-    width: 95vw;
-    height: 95vh;
+    background-color:rgba(158, 159, 160, 0.26);
+    width: 100vw;
+    height: 100vh;
     display: block;
     position: fixed;
     box-sizing: border-box;
@@ -34,10 +36,11 @@ ul{
     left: 0;
     z-index: 999;
     overflow: auto;
-    margin-top: 5vh;
+    margin: 0 auto;
+    /* margin-top: 5vh; */
     backdrop-filter: blur(4px);
     border-radius: 5px;
-    border: 5px solid rgba(156, 177, 83, 0.274);
+    /* border: 5px solid rgba(156, 177, 83, 0.274); */
     /* transition: 1s; */
 }
 #pokeName{
@@ -69,14 +72,16 @@ img{
     width:40vw;
     height: fit-content;
     margin: 0 auto;
-    border: 2px solid;
-    border-radius: 50%;
+    /* border: 2px solid rgba(0, 0, 0, 0.116); */
+    /* border-radius: 50%; */
 }
 #modal{
     width: 60vw;
     height: fit-content;
     background-color: rgb(224, 199, 86);
     margin: 0 auto;
+    margin-top: 5%;
     text-align: center;
     border-radius: 5px;
+    border: 5px solid wheat;
 }
