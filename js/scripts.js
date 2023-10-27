@@ -31,11 +31,15 @@ let pokemonRepository = (function()//Pokemon Repository...
                 let pokeButton = document.createElement('button');
                 pokeButton.innerText = pokemon.name;
                 pokeButton.classList.add('pokeButton');
+                pokeButton.classList.add('btn_btn-primary');
+                pokeButton.setAttribute('type','button');
+                pokeButton.setAttribute('data-toggle','modal');
+                pokeButton.setAttribute('data-target','#modalContainer');
                 pokeItem.appendChild(pokeButton);
                 htmlPokeList.appendChild(pokeItem);
                 pokeButton.addEventListener('click',function(event)//the button that shows the pokemon details
                 {
-                    showDetails(pokemon);
+                     showDetails(pokemon);
                  
                 })
         }
@@ -46,11 +50,10 @@ let pokemonRepository = (function()//Pokemon Repository...
               console.log(pokemon);
            
 
-            let modalContainer = document.getElementById('modalContainer');
-            modalContainer.classList.add('isVisible');
-            modalContainer.classList.remove('isHidden');
-            closeButton = document.getElementById('closeButton');
-            closeButton.addEventListener('click',closeModal);
+           // let modalContainer = document.getElementById('modalContainer');
+            //modalContainer.classList.add('isVisible');
+            //modalContainer.classList.remove('isHidden');
+           
 
            let pokeName = document.getElementById('pokeName');
            let pokeHeight = document.getElementById('pokeHeight');
@@ -68,7 +71,7 @@ let pokemonRepository = (function()//Pokemon Repository...
                 
             console.log(pokemon.types[0].type.name);
             pTypeModalColor = pokemon.types[0].type.name;
-                 modal = document.getElementById('modal');
+                 modal = document.querySelector('modal');
                if(pTypeModalColor==='water'||pTypeModalColor==='ice')
                {
                     modal.style.backgroundColor = 'aqua';
