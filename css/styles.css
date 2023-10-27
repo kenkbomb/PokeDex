@@ -25,40 +25,17 @@ ul {
     padding: 1%;
     border-radius: 5px;
 }
-.isVisible{
-    background-color:rgba(158, 159, 160, 0.26);
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    position: fixed;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    overflow: auto;
-    margin: 0 auto;
-    /* margin-top: 5vh; */
-    backdrop-filter: blur(4px);
-    border-radius: 5px;
-    /* border: 5px solid rgba(156, 177, 83, 0.274); */
-    /* transition: 1s; */
-}
+
 .modal{
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
 
 }
 #pokeName{
     margin-top: 5%;
     position: relative;
 }
-.isHidden{
-    display:none;
-}
-#textSection{
-    position: relative;
-    margin-top: 50px;
 
-}
+
 #closeButton{
     position: relative;
     top:90%;
@@ -76,16 +53,5 @@ img{
     width:40vw;
     height: fit-content;
     margin: 0 auto;
-    /* border: 2px solid rgba(0, 0, 0, 0.116); */
-    /* border-radius: 50%; */
-}
-#modal{
-    width: 60vw;
-    height: fit-content;
-    background-color: rgb(224, 199, 86);
-    margin: 0 auto;
-    margin-top: 5%;
-    text-align: center;
-    border-radius: 5px;
-    border: 5px solid wheat;
+    
 }

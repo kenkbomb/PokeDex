@@ -69,9 +69,9 @@ let pokemonRepository = (function()//Pokemon Repository...
             image.setAttribute('src',pokemon.imageUrl);
            
                 
-           /* console.log(pokemon.types[0].type.name);
+            console.log(pokemon.types[0].type.name);
             pTypeModalColor = pokemon.types[0].type.name;
-                 modal = document.querySelector('modalbg');
+                 modal = document.getElementById('modalbg');
                if(pTypeModalColor==='water'||pTypeModalColor==='ice')
                {
                     modal.style.backgroundColor = 'aqua';
@@ -112,7 +112,7 @@ let pokemonRepository = (function()//Pokemon Repository...
 
                console.log(pTypeModalColor);
 
-
+               /*
              window.addEventListener('keydown',(e)=>
             {
                 if(e.key==='Escape')
