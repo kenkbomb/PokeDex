@@ -69,9 +69,9 @@ let pokemonRepository = (function()//Pokemon Repository...
             image.setAttribute('src',pokemon.imageUrl);
            
                 
-            console.log(pokemon.types[0].type.name);
+           /* console.log(pokemon.types[0].type.name);
             pTypeModalColor = pokemon.types[0].type.name;
-                 modal = document.querySelector('modal');
+                 modal = document.querySelector('modalbg');
                if(pTypeModalColor==='water'||pTypeModalColor==='ice')
                {
                     modal.style.backgroundColor = 'aqua';
@@ -113,11 +113,11 @@ let pokemonRepository = (function()//Pokemon Repository...
                console.log(pTypeModalColor);
 
 
-            window.addEventListener('keydown',(e)=>
+             window.addEventListener('keydown',(e)=>
             {
                 if(e.key==='Escape')
                 {
-                    closeModal();
+                   // closeModal();
                     
                 }
             });
@@ -127,18 +127,18 @@ let pokemonRepository = (function()//Pokemon Repository...
                
                 let target = e.target;
                 if (target ===modalContainer) {
-                  closeModal();
+                 // closeModal();
                 }
-              });
+              });*/
             });
         }
 
-        function closeModal()
+       /* function closeModal()
         {
             
-            modalContainer.classList.remove('isVisible');
+           // modalContainer.classList.remove('isVisible');
            
-        }
+        }*/
        
 
         let htmlPokeList = document.querySelector('ul');
