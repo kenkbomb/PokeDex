@@ -49,10 +49,6 @@ let pokemonRepository = (function()//Pokemon Repository...
             loadDetails(pokemon).then(function () {
               console.log(pokemon);
            
-
-           // let modalContainer = document.getElementById('modalContainer');
-            //modalContainer.classList.add('isVisible');
-            //modalContainer.classList.remove('isHidden');
            
 
            let pokeName = document.getElementById('pokeName');
@@ -112,33 +108,11 @@ let pokemonRepository = (function()//Pokemon Repository...
 
                console.log(pTypeModalColor);
 
-               /*
-             window.addEventListener('keydown',(e)=>
-            {
-                if(e.key==='Escape')
-                {
-                   // closeModal();
-                    
-                }
-            });
-            
-
-            modalContainer.addEventListener('click', (e) => {
-               
-                let target = e.target;
-                if (target ===modalContainer) {
-                 // closeModal();
-                }
-              });*/
+             
             });
         }
 
-       /* function closeModal()
-        {
-            
-           // modalContainer.classList.remove('isVisible');
-           
-        }*/
+       
        
 
         let htmlPokeList = document.querySelector('ul');
