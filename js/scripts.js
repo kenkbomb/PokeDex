@@ -9,7 +9,8 @@ let pokemonRepository = (function()//Pokemon Repository...
         //-----------------------------------------------------------------------------------------
         let htmlPokeList = document.querySelector('ul');
         let sortByName = false;
-       
+       let noMatch = document.getElementById("noMatch");
+       let noMatchImg = document.getElementById("noMatchImg");
         let results = [];
         let searchInputValue = document.getElementById("search").value;
         let searchInput = document.getElementById("search");
@@ -100,7 +101,17 @@ let pokemonRepository = (function()//Pokemon Repository...
          
             results.sort((a,b)=>a.name.localeCompare(b.name));
           }
-          
+          if(results.length===0)
+            {
+              htmlPokeList.className = "invisible";
+              noMatch.className = "seen"
+              noMatchImg.className = "seen";
+            }
+            else{
+              htmlPokeList.className = "poke-list";
+              noMatch.className = "invisible";
+              noMatchImg.className = "invisible";
+            }
           return results;
             //return pokemonList;
          
@@ -142,18 +153,6 @@ let pokemonRepository = (function()//Pokemon Repository...
             }
            
                
-        
-        
-        function getTypes(pokemon)//not used
-        {
-          loadDetails(pokemon).then(function() {
-           
-            console.log(pokemon.types[0].type.name);
-            pt = pokemon.types[0].type.name;
-            console.log(pt);
-          });
-        }
-
         function showDetails(pokemon) //the showdetails function, assigned to the pokeButton element
         {
             loadDetails(pokemon).then(function () {
@@ -270,7 +269,7 @@ let pokemonRepository = (function()//Pokemon Repository...
 
        
 
-  function loadDetails(item) {//item is a pokemon...
+        function loadDetails(item) {//item is a pokemon...
     let url = item.detailsUrl;//url taken from the pokemons detailsURL, given from loadlist above...
     return fetch(url).then(function (response) {//fetch the data from the URL, as a response and turn it into json data...
       return response.json();
