@@ -95,7 +95,8 @@ let pokemonRepository = (function()//Pokemon Repository...
 
         function getAllPokemon()
         {
-          results = pokemonList.filter(filter)
+          results = pokemonList.filter(filter)//first basic filter
+          results = results.filter(filterSecond);//second more specific filter
           pcount.innerText = "Results: "+ results.length;
           if(sortByName===true){
          
@@ -129,7 +130,18 @@ let pokemonRepository = (function()//Pokemon Repository...
                 }
                 else {return pokemon;}
               }
-
+              function filterSecond(pokemon)
+              {
+                if(searchInputValue!="")
+                  {
+                if(pokemon.name.includes(searchInputValue))
+                  {
+                    
+                    return pokemon;
+                  }
+                }
+                else {return pokemon;}
+              }
         function addListItem(pokemon)//adds and appends the html elements, the main list
         {
          
@@ -157,7 +169,7 @@ let pokemonRepository = (function()//Pokemon Repository...
         {
             loadDetails(pokemon).then(function () {
               console.log(pokemon);
-            let  pTypeModalColor = pokemon.types[0].type.name;
+            
             //let modalText = document.getElementById('modal-body');
             modal = document.getElementById('modalbg');
 
@@ -179,7 +191,7 @@ let pokemonRepository = (function()//Pokemon Repository...
               console.log(pokemon.weight.toString());
             console.log(pokemon.types[0].type.name);
             
-                 
+            let  pTypeModalColor = pokemon.types[0].type.name;
                if(pTypeModalColor==='water'||pTypeModalColor==='ice')
                {
                     modal.style.backgroundColor = 'aqua';
