@@ -71,6 +71,7 @@ let pokemonRepository = (function()//Pokemon Repository...
         clearButton.addEventListener("click",function(event){
          
           searchInput.value = "";
+          
           console.log("search input value set to empty string");
           htmlPokeList.replaceChildren();
           getAllPokemon();
