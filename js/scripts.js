@@ -9,13 +9,12 @@ let pokemonRepository = (function()//Pokemon Repository...
         //-----------------------------------------------------------------------------------------
         let htmlPokeList = document.querySelector('ul');
         let sortByName = false;
-       let noMatch = document.getElementById("noMatch");
-       let noMatchImg = document.getElementById("noMatchImg");
+        let noMatch = document.getElementById("noMatch");
+        let noMatchImg = document.getElementById("noMatchImg");
         let results = [];
         let searchInputValue = document.getElementById("search").value;
         let searchInput = document.getElementById("search");
-        let clearButton  = document.getElementById("clearButton");
-        clearButton.innerText = "Search";
+        
         let sortNameBtn = document.getElementById("sortBtnName");
         let pcount = document.getElementById("pcount");
 
@@ -58,31 +57,11 @@ let pokemonRepository = (function()//Pokemon Repository...
             {
               addListItem(results[i]);
             }
-          if(searchInputValue==="")
-            {
-              clearButton.innerText = "Search";
-            }
-            else{
-              clearButton.innerText = "Clear";
-            }
-          
-        })
-        
-        clearButton.addEventListener("click",function(event){
          
-          searchInput.value = "";
           
-          console.log("search input value set to empty string");
-          htmlPokeList.replaceChildren();
-          getAllPokemon();
-          for(let i=0;i<pokemonList.length;i++)
-            {
-              addListItem(pokemonList[i]);
-            }
         })
-       
         
-
+  
         function addPokemon(pokemon)
         {
             if(pokemon instanceof Object)
@@ -170,28 +149,20 @@ let pokemonRepository = (function()//Pokemon Repository...
         {
             loadDetails(pokemon).then(function () {
               console.log(pokemon);
-            
-            //let modalText = document.getElementById('modal-body');
             modal = document.getElementById('modalbg');
-
-           let pokeName = document.getElementById('pokeName');
-           let pokeHeight = document.getElementById('pokeHeight');
+            let pokeName = document.getElementById('pokeName');
+            let pokeHeight = document.getElementById('pokeHeight');
             let pokeImg = document.getElementById('pokeImg');
             let pType = document.getElementById('ptype');
             let pokeWeight = document.getElementById('pokeWeight');
-
-           pokeName.innerText = pokemon.name;
-           pokeHeight.innerText = 'Height: '+ pokemon.height.toString();
-           pokeWeight.innerText = 'Weight: '+ pokemon.weight.toString();
-           pType.innerText = 'Type: ' + pokemon.types[0].type.name;
-        
+            pokeName.innerText = pokemon.name;
+            pokeHeight.innerText = 'Height: '+ pokemon.height.toString();
+            pokeWeight.innerText = 'Weight: '+ pokemon.weight.toString();
+            pType.innerText = 'Type: ' + pokemon.types[0].type.name;
             pokeImg.imageUrl = pokemon.imageUrl.sprites;
             let image = document.getElementById('pImage');
             image.setAttribute('src',pokemon.imageUrl);
            
-              console.log(pokemon.weight.toString());
-            console.log(pokemon.types[0].type.name);
-            
             let  pTypeModalColor = pokemon.types[0].type.name;
                if(pTypeModalColor==='water'||pTypeModalColor==='ice')
                {
@@ -248,11 +219,7 @@ let pokemonRepository = (function()//Pokemon Repository...
                 modal.style.border = '4px solid darkgrey';
                 modal.style.color = 'darkgrey';
                }
-
-               console.log(pTypeModalColor);
-
-             
-            });
+               });
         }
 
     
