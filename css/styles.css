@@ -123,3 +123,12 @@ form{
    
     
 }
+@media (max-width:900px)
+{
+    .bgimg{
+        display:none;
+    }
+    body{
+        background-image: linear-gradient(blue,yellow);
+    }
+}

@@ -10,12 +10,8 @@
   + Fetch
   + ESlint rules
   + Pokeapi
-
-  ### Incoming Features...
-  + Style and visual tweaks and animations
-  + A working search function
-  + A loading image/animation
-  + Navbar improvements
+  
+  
 
   
   
